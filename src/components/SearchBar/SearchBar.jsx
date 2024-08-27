@@ -1,12 +1,21 @@
+import { Field, Form, Formik } from "formik";
+import css from './SearchBar.module.css';
 
-export default function SearchBar() {
+
+export default function SearchBar( {onSearch}) {
     return (
-        <header>
-         <form>
-            <input type="text"  autoComplete="off"  autoFocus  placeholder="Search images and photos" />
-            <button type="submit">Search</button>
-         </form>
+      <header>
+        <Formik initialValues={{ topic: "" }}
+                onSubmit={(values, actions) => {
+                    onSearch(values.topic);
+                    actions.resetForm();
+                }}
+            >
+                <Form className={css.form}>
+                   <Field type="text" name="topic" className={css.input} />
+                    <button type="submit">Search</button>
+                </Form>
+            </Formik>
         </header>
-
-    )
+    );
 }

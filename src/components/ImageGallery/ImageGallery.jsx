@@ -1,16 +1,17 @@
 import css from './ImageGallery.module.css';
+
 import ImageCard from '../ImageCard/ImageCard';
 
-export default function ImageGallery() {
-    return (
-    <ul>
-	{/* Набір елементів списку із зображеннями */}
-	<li>
-		<div>
-		  <img src="" alt="" />
-		</div>
-	</li>
-</ul>
-
-    )
+export default function ImageGallery(items) {
+	return (
+		<ul className={css.list}>
+			{items.map((item) => (
+				<li key={item.objectID}>
+					<a className={css.link} href={item.url}>
+						{item.title}
+					</a>
+				</li>
+			))}
+		</ul>
+	);
 }
