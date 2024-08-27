@@ -3,7 +3,7 @@ export default function SearchBar() {
     return (
         <header>
          <form>
-            <input type="text"  autocomplete="off"  autofocus  placeholder="Search images and photos" />
+            <input type="text"  autoComplete="off"  autoFocus  placeholder="Search images and photos" />
             <button type="submit">Search</button>
          </form>
         </header>
