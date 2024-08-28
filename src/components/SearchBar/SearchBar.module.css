@@ -1,0 +1,44 @@
+.header {
+    background-color: #307ae9;
+    padding: 5px;
+    text-align: center;
+}
+.form {
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    width: 460px;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.input{
+     background-color: transparent;
+     width: 460px;
+     height: 35px;
+     border: none;
+     outline: none;
+     flex: 1;
+     font-size: 16px;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 150%;
+     letter-spacing: 0.04em;
+}
+.input::placeholder{
+    font-size: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0.04em;
+    color: #aca8a8;
+}
+.icon {
+    margin: 8px;
+    color: #307ae9;
+    cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.icon:hover,
+.icon:focus {
+    color: #1e087c;
+}
