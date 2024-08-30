@@ -17,32 +17,36 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isSearchAttempted, setIsSearchAttempted] = useState(false);
 
   const handleSearch = (newTopic) => {
+    if (newTopic.trim() === '') {
+      toast.error('Please enter a search term.');
+      setIsSearchAttempted(false);
+      return;
+    }
     setTopic(newTopic);
     setPage(1);
     setArticles([]);
+    setIsSearchAttempted(true);
   };
 
   const handleLoadMore = () => {
-    setPage(page + 1);
+    setPage((prevPage) => prevPage + 1);
   };
 
   const openModal = (image) => {
-    setSelectedImage(image);
-    setModalIsOpen(true);
+      setSelectedImage(image);
+      setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedImage(null);
-    setModalIsOpen(false);
+      setSelectedImage(null);
+      setModalIsOpen(false);
   };
 
   useEffect(() => {
-    if (topic === '') {
-      toast('Please enter a search term.');
-      return;
-    }
+    if (!isSearchAttempted) return; 
 
     async function getArticles() {
       try {
@@ -52,18 +56,19 @@ export default function App() {
         setArticles((prevState) => [...prevState, ...fetchedArticles]);
       } catch {
         setError(true);
+        toast.error; 
       } finally {
         setLoading(false);
       }
     }
 
     getArticles();
-  }, [page, topic]);
+  }, [page, topic, isSearchAttempted]);
 
   return (
     <div className={css.container}>
+      <Toaster position="top-right" reverseOrder={false} />
       <SearchBar onSearch={handleSearch} />
-      <Toaster />
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {articles.length > 0 && (
@@ -72,7 +77,7 @@ export default function App() {
           {!loading && !error && <LoadMoreBtn onClick={handleLoadMore} />}
         </>
       )}
-      <ImageModal isOpen={modalIsOpen} onClose={closeModal} image={selectedImage} />
+        <ImageModal isOpen={modalIsOpen} onClose={closeModal} image={selectedImage} />
     </div>
   );
 }

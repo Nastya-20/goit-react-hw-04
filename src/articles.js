@@ -9,13 +9,13 @@ export const fetchArticles = async (topic, page) => {
             params: {
                 query: topic,
                 page,
-                per_page: 5,
+                per_page: 8,
             },
         });
-        return response.data.results; // Access the results array
+        return response.data.results; 
     } catch (error) {
         console.error("Error fetching images:", error);
-        throw error; // Re-throw the error to be handled by the caller
+        throw error; 
     }
 };
 

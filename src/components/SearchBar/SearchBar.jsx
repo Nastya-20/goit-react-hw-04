@@ -1,6 +1,7 @@
-// SearchBar.jsx
 import { Field, Form, Formik } from 'formik';
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import css from './SearchBar.module.css';
 
 export default function SearchBar({ onSearch }) {
@@ -26,7 +27,7 @@ export default function SearchBar({ onSearch }) {
             autoFocus
             placeholder="Search images and photos"
           />
-          <button type="submit" className={css.button}>Search</button>
+          <button type="submit" className={css.button}><FontAwesomeIcon className={css.icon} icon={faMagnifyingGlass} /></button>
         </Form>
       </Formik>
     </header>

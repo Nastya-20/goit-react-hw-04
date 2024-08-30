@@ -6,6 +6,8 @@
  
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 body {
   margin: 0;
@@ -19,4 +21,14 @@ img{
 }
 button {
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+}
+svg {
+  margin: 0;
+  padding: 0;
+}
+p{
+  margin: 0;
 }
